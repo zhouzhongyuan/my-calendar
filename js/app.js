@@ -1,4 +1,5 @@
 var days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+var months = [31,28,31,30,31,30,31,31,30,31,30,31];
 var dates = [19, 20, 21, 22, 23, 24, 25];
 var MvDaynamesTableView = Backbone.View.extend({
     el: $('#mvDaynamesTable'),
@@ -36,34 +37,75 @@ var MonthRowView = Backbone.View.extend({
     }
 });
 //父View
+
+
+
+
+
+var startDate = new Date();
+// startDate = new  Date("09 02,2016");
+var dayOfMonth = startDate.getDate();
+var dayOfWeek = startDate.getDay();
+
+console.log(startDate);
+startDate.setDate(dayOfMonth - (dayOfWeek - 1));
+console.log(startDate);
+
+
+function getSevenArray(startDate) {
+
+    var arr = [];
+    for(var i = 0; i < 7; i++){
+        var dayOfMonth = startDate.getDate();
+        arr.push(dayOfMonth);
+        startDate.setDate(dayOfMonth + 1);
+        console.log(startDate)
+    }
+    return arr;
+    console.log(arr);
+}
 var monthRowViewAttribute = {
     days: days,
     position:{
         top:'0%',
         height:'26%',
     },
-    dates:dates
+    dates:getSevenArray(startDate)
 }
-var view = new MonthRowView(monthRowViewAttribute);
-$('#mvEventContainer').append( view.render().el );
 
-monthRowViewAttribute.position = {
-    top:'25%',
-    height:'26%',
-};
-var view = new MonthRowView(monthRowViewAttribute);
-$('#mvEventContainer').append( view.render().el );
+function renderMonthView(monthRowViewAttribute) {
+    var view = new MonthRowView(monthRowViewAttribute);
+    $('#mvEventContainer').append( view.render().el );
+}
 
-monthRowViewAttribute.position = {
-    top:'50%',
-    height:'26%',
-};
-var view = new MonthRowView(monthRowViewAttribute);
-$('#mvEventContainer').append( view.render().el );
+renderMonthView(monthRowViewAttribute);
 
-monthRowViewAttribute.position = {
-    top:'75%',
-    bottom:'0',
+monthRowViewAttribute= {
+    days: days,
+    position:{
+        top:'25%',
+        height:'26%',
+    },
+    dates:getSevenArray(startDate)
 };
-var view = new MonthRowView(monthRowViewAttribute);
-$('#mvEventContainer').append( view.render().el );
+renderMonthView(monthRowViewAttribute);
+
+monthRowViewAttribute = {
+    days: days,
+    position:{
+        top:'50%',
+        height:'26%',
+    },
+    dates:getSevenArray(startDate)
+};
+renderMonthView(monthRowViewAttribute);
+
+monthRowViewAttribute = {
+    days: days,
+    position:{
+        top:'75%',
+        bottom:'0',
+    },
+    dates:getSevenArray(startDate)
+};
+renderMonthView(monthRowViewAttribute);

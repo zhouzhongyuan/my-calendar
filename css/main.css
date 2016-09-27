@@ -62,3 +62,27 @@
     -moz-transform: all .218s;
     -webkit-transform: all .218s;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+#topRightNavigation{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    /*align-items: stretch;*/
+    margin: 0;
+    padding: 0;
+    height: 50px;
+}
+#topRightNavigation div{
+    flex: 1;
+    text-align: center;
+    background-color: #555555;
+    height: 25px;
+}
+li{
+    text-decoration: none;
+    list-style: none;
+}

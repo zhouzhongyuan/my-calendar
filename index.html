@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,6 +9,13 @@
     <title>My Calendar</title>
 </head>
 <body>
+
+<div id="topRightNavigation">
+    <div>日</div>
+    <div>4周</div>
+</div>
+
+
 <!--4周-->
 <div id="gridcontainer">
     <div class="mv-container">
@@ -38,13 +45,14 @@
             <tbody>
             <tr>
                 <% for(var date in dates) {%>
-                    <td class="st-dtitle st-dtitle-fr st-dtitle-fc"><span class="ca-cdp23859"> <%= dates[date] %> </span></td>
+                <td class="st-dtitle st-dtitle-fr st-dtitle-fc"><span class="ca-cdp23859"> <%= dates[date] %> </span>
+                </td>
                 <% } %>
             </tr>
             <tr>
 
                 <% for(var date in dates) {%>
-                    <td class="st-c st-s">&nbsp;</td>
+                <td class="st-c st-s">&nbsp;</td>
                 <% } %>
             </tr>
             </tbody>
@@ -54,7 +62,6 @@
     </div>
 </script>
 <script style="text/template" id=""></script>
-
 
 
 <script src="node_modules/jquery/dist/jquery.js"></script>
